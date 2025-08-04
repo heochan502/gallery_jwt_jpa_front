@@ -25,11 +25,11 @@ const computedItemDiscountPrice = computed(() => {
   );
 });
 
-const account = useAccountStore();
+const accountStore = useAccountStore();
 //장바구니에 상품 담기
 const put = async () => {
   //   window.alert('준비 중입니다.');
-  if (!account.state.loggedIn) {
+  if (!accountStore.state.isSigned) {
     alert('로그인 하세용');
     return;
   }

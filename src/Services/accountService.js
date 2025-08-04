@@ -15,3 +15,8 @@ export const check = () => {
 export const logout = () => {
   return axios.post('/account/logout').catch((e) => e.response);
 };
+
+
+export const reissue = () =>{
+  return axios.post('/account/reissue').catch(e=>e.response);
+}
