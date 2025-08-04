@@ -1,9 +1,9 @@
 <script setup>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import { check } from './Services/accountService';
+// import { check } from './Services/accountService';
 import { useRoute } from 'vue-router';
-import { watch, onMounted } from 'vue';
+// import { watch, onMounted } from 'vue';
 import { useAccountStore } from './stores/account';
 
 const route = useRoute();

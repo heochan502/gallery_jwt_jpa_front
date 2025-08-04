@@ -2,6 +2,8 @@
 import { getItems, removeItem, clearCart } from '@/Services/cartService';
 import { onMounted, reactive, computed } from 'vue';
 
+const imgBaseUrl = import.meta.env.VITE_BASE_URL;
+
 const state = reactive({
   items: [],
 });
@@ -73,7 +75,7 @@ onMounted(() => {
             
             <img
               :alt="`상품 사진 (${i.name})`"
-              :src="`/pic/item/${i.imgPath}`"
+              :src="`${imgBaseUrl}/pic/item/${i.imgPath}`"
             />
             <b class="name">{{ i.name }}</b>
             <span class="price">

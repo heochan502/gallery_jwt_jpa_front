@@ -44,11 +44,13 @@ const submit = async () => {
   }
   state.form.itemIds = state.items.map((item) => item.itemId);
   const res = await addOrder(state.form);
-  // console.log('res : ', state.form.itemIds);
-  if (res === undefined || res.status !== 200) {
-    alert('에러 발생');
-    return;
-  }
+  console.log('state.form : ', state.form);
+
+  console.log('res : ', res.data);
+  if( res === undefined || res.status !== 200 ) {
+        alert('에러 발생');
+        return;
+    }
   const message = ['주문이 완료 되었습니다.'];
   if (state.form.payment === 'bank') {
     const price = computedTotalPrice.value.toLocaleString();

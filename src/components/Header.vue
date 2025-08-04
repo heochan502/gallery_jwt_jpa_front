@@ -2,6 +2,7 @@
 import { reactive } from 'vue';
 import { useAccountStore } from '@/stores/account';
 import { logout } from '@/Services/accountService';
+import router from '@/router';
 
 const account = useAccountStore();
 
@@ -16,6 +17,7 @@ const logoutAccount = async () => {
   }
   account.logout();
   alert('로그아웃 완료');
+  await router.push('/');
 };
 </script>
 

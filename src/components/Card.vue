@@ -4,6 +4,9 @@ import { addItem } from '@/Services/cartService';
 import { useAccountStore } from '@/stores/account';
 import { useRouter } from 'vue-router';
 
+const imgBaseUrl = import.meta.env.VITE_BASE_URL;
+
+
 const router = useRouter();
 //프로퍼티 객체
 const props = defineProps({
@@ -29,23 +32,24 @@ const accountStore = useAccountStore();
 //장바구니에 상품 담기
 const put = async () => {
   //   window.alert('준비 중입니다.');
-  if (!accountStore.state.isSigned) {
-    alert('로그인 하세용');
-    return;
-  }
+  // if (!accountStore.state.isSigned) {
+  //   alert('로그인 하세용');
+  //   return;
+  // }
 
   const res = await addItem(props.item.id);
-  if (res === undefined) {
-    alert('서버에 문제가 있습니다.');
-    return;
-  } 
-  else if (res.status === 500) {
-    // console.log('res.status :', res.status);
-    alert('이미 장바구니에 담겨있습니다');
-  } 
-  else if (
-    confirm('장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?')
-  ) {
+  // if (res === undefined) {
+  //   alert('서버에 문제가 있습니다.');
+  //   return;
+  // } 
+  // else if (res.status === 500) {
+  //   // console.log('res.status :', res.status);
+  //   alert('이미 장바구니에 담겨있습니다');
+  // } 
+  // else
+  if ( res.status === 200 && confirm('장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?')
+  ) 
+  {
     router.push('/cart');
     console.log('카트 담기 성공!');
   }
@@ -57,7 +61,7 @@ const put = async () => {
     <span
       class="img"
       :style="{
-        backgroundImage: `url(/pic/item/${props.item.imgPath})`,
+        backgroundImage: `url(${imgBaseUrl}/pic/item/${props.item.imgPath})`,
       }"
       :aria-label="`상품사진(${props.item.name})`"
     ></span>

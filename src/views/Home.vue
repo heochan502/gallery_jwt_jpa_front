@@ -20,6 +20,9 @@ onMounted(async () => {
   console.log('res.dat:', res.data);
   state.items = res.data;
 
+
+
+
   // globalErrorStore.setErrorMessage('크크크크크킄');
 
   // const res = await getItems();
