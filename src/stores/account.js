@@ -3,11 +3,21 @@ import { defineStore } from 'pinia';
 
 export const useAccountStore = defineStore('account', () => {
   const state = reactive({
-    checked: false,
-    loggedIn: false,
+    signedUser: null,
+    isSigned: false
   });
-  const setChecked = (val) => (state.checked = val);
-  const setLoggedIn = (val) => (state.loggedIn = val);
+  // const setChecked = (val) => (state.checked = val);
+  // const setLoggedIn = (val) => (state.loggedIn = val);
+  const setSignedUser = val =>{
+    state.signedUser = val;
+    state.isSigned = true;
+  }
+  const logout=() => {
+    state.signedUser = null;
+    state.isSigned = false;
+  }
 
-  return { state, setChecked, setLoggedIn };
-});
+  return { state, setSignedUser, logout };
+},
+{persis:true}
+);
