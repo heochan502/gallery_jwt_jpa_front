@@ -44,6 +44,14 @@ const router = createRouter({
       name: 'orderDetail',
       component: OrderDetail,
     },
+    {
+      path: '/detail',
+      component: () => import('../views/Detail.vue')
+    },
+    {
+      path: '/addproduct',
+      component: () => import('../views/ProductForm.vue')
+    },
   ],
 });
 
